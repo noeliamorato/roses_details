@@ -3,3 +3,24 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+body{
+  overflow-x: hidden;
+}
+
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgb(49, 48, 48);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #f1f1f177;
+}

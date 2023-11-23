@@ -1,10 +1,14 @@
 
+import { HashRouter, Route, Routes } from 'react-router-dom';
+import Index from './pages/informativa';
 function App() {
- 
+
   return (
-    <>
-     <div>data</div>
-    </>
+    <HashRouter>
+      <Routes>
+        <Route path='/' element = {<Index/>}/>
+      </Routes>
+    </HashRouter>
   )
 }
 
