@@ -10,6 +10,8 @@ import {
   Vision,
   Valores,
   Footer,
+  Titulo,
+  Imagenes,
 } from "../../styles/styled_index";
 
 import { Link } from "react-router-dom";
@@ -23,6 +25,11 @@ import tres from "../../assets/img/tres.png";
 import cuatro from "../../assets/img/cuatro.png";
 import cinco from "../../assets/img/cinco.png";
 import seis from "../../assets/img/seis.png";
+import fondo2 from "../../assets/img/fondo2.png";
+import fondo3 from "../../assets/img/fondo3.png";
+import siete from "../../assets/img/siete.png";
+import diez from "../../assets/img/diez.png";
+import doce from "../../assets/img/doce.png";
 
 const Index = () => {
   return (
@@ -53,17 +60,15 @@ const Index = () => {
       <Home>
         <section>
           <div className="title">
-            <h1 className="roses">Roses</h1>
-            <h1 className="y">&</h1>
-            <h1 className="detalles">Details</h1>
+            <h1 >Roses  &</h1>
+            <h2 >Details</h2>
           </div>
           <div className="imagenes">
-            <img className="fondo1" src={fondo1} alt="" />
-            <img className="fondo5" src={fondo5} alt="" />
-            <img className="fondo4" src={fondo4} alt="" />
+            <img  src={fondo1} alt="" />
+            <img  src={fondo5} alt="" />
+            <img  src={fondo4} alt="" />
           </div>
         </section>
-        <p></p>
       </Home>
 
       {/* --------------------------------------nosotros----------------------------------------- */}
@@ -132,14 +137,55 @@ const Index = () => {
               </p>
             </section>
           </div>
+          <img src={fondo2} alt="" />
+          <img src={fondo3} alt="" />
+          <img src={siete} alt="" />
         </Valores>
       </Nosotros>
 
       {/* --------------------------------------contactos----------------------------------------- */}
-      <Contactos></Contactos>
+      <Contactos>
+        <Imagenes>
+          <img src={diez} alt="" />
+        </Imagenes>
+        <Titulo>
+          <p>¿Tienes dudas?</p>
+          <p>Contáctanos</p>
+          <p>Nos encontramos en las redes sociales</p>
+
+          <div className=" form">
+            <div>
+              <label htmlFor="nombre">Nombre</label>
+              <input type="text" />
+              <label htmlFor="pedido">Detalle elegido</label>
+              <input type="text" />
+              <label htmlFor="detalle elegido">Fecha y lugar</label>
+              <input type="text" />
+            </div>
+            <div>
+              <img src={doce} alt="" />
+            </div>
+          </div>
+        </Titulo>
+      </Contactos>
 
       {/* --------------------------------------footer----------------------------------------- */}
-      <Footer></Footer>
+      <Footer>
+        <div className="redes"> 
+        <p>redes</p>
+        </div>
+        <div className="uno">
+          <div className="dos">
+          <p>Roses & Details</p>
+          <p>Copyright © 2023 Noelia Morato Caero</p>
+          </div>
+          <div className="tres">
+            <p>Información legar</p>  
+            |
+            <p>Política de privacidad</p>
+          </div>
+        </div>
+      </Footer>
     </Container>
   );
 };

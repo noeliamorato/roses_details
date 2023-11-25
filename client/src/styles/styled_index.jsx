@@ -1,20 +1,13 @@
 import styled from "styled-components";
-
-export const colors = {
-  padrecolor: "#ffff",
-  primary: "#efd3d4",
-  secondary: "#b01a1d",
-  terceary: "#5f1b1e",
-  color: "#263f30",
-  black: "#000",
-};
+import { colors } from "./styled_herencia";
+import { displayflex } from "./styled_herencia";
 
 export const Container = styled.section`
   .segundo {
     width: 100vw;
     display: flex;
     flex-direction: row;
-    position: fixed;
+    position: absolute;
   }
 `;
 
@@ -32,6 +25,7 @@ export const Navbar = styled.nav`
   display: flex;
   justify-content: left;
   padding-left: 20em;
+  z-index: 100;
 
   ul {
     display: flex;
@@ -39,6 +33,7 @@ export const Navbar = styled.nav`
     align-items: center;
     padding: 1em;
     gap: 3em;
+    z-index: 100;
   }
   li {
     list-style: none;
@@ -53,6 +48,7 @@ export const Home = styled.section`
   position: relative;
   width: 100vw;
   height: 100vh;
+  z-index: -1;
   &::before {
     //seudoclase que permite crear un elemento, es decir: crea una caja igual a la otra osea home
     background-color: ${colors.secondary};
@@ -61,7 +57,7 @@ export const Home = styled.section`
     width: 30%;
     height: 100vh;
     right: 0;
-    z-index: -1;
+    z-index: -10;
   }
 
   &::after {
@@ -72,83 +68,64 @@ export const Home = styled.section`
     height: 100vh;
     left: 0;
     top: 0;
-    z-index: -1;
+    z-index: -10;
   }
 
   & > section {
-    width: 100vw;
-    height: 100vh;
-    display: flex;
     flex-direction: row;
-    align-items: center;
-    justify-content: center;
+    ${displayflex}
+    position:absolute;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
     .imagenes {
       background-color: #eeecef;
       width: 550px;
       height: 400px;
-      display: flex;
-      flex-direction: center;
-      align-items: center;
-      justify-content: center;
-      .fondo1 {
-        width: 240px;
+      ${displayflex};
+      position: absolute;
+      right: 15em;
+      z-index: -2;
+      box-shadow: 0 5px 5px #0005;
+
+      & img {
+        width: 230px;
         position: absolute;
-        top: 75%;
-        left: 60%;
-        transform: translate(-100%, -100%);
-        z-index: 1;
-      }
-      .fondo4 {
-        width: 220px;
-        position: absolute;
-        top: 90%;
-        left: 65%;
-        transform: translate(-100%, -100%);
-        z-index: 1;
-      }
-      .fondo5 {
-        width: 270px;
-        position: absolute;
-        top: 75%;
-        left: 80%;
-        transform: translate(-100%, -100%);
-        z-index: 1;
+        filter: drop-shadow(0 5px 5px #0005);
+        &:nth-child(1) {
+          top: 3em;
+          left: 4em;
+        }
+        &:nth-child(2) {
+          top: 1em;
+          right: 0em;
+        }
+        &:nth-child(3) {
+          bottom: -3em;
+          /* left:6em; */
+        }
       }
     }
 
     .title {
-      .roses {
+      width: 50%;
+      height: 55%;
+      position: absolute;
+      bottom: 10em;
+      & > h1 {
         font-size: 110px;
         color: ${colors.secondary};
         display: flex;
-        flex-direction: center;
+        flex-wrap: wrap;
+        width: 50%;
         justify-content: center;
-        align-items: center;
-        position: absolute;
-        top: 40%;
-        left: 45%;
-        transform: translate(-100%, -100%);
-        z-index: 1;
+        text-align: center;
       }
-      .y {
-        font-size: 90px;
-        color: ${colors.secondary};
-        display: flex;
-        flex-direction: center;
-        justify-content: center;
-        align-items: center;
-        position: absolute;
-        top: 55%;
-        left: 40%;
-        transform: translate(-100%, -100%);
-        z-index: 1;
-      }
-      .detalles {
+      & > h2 {
         color: transparent;
         -webkit-text-stroke: 1px ${colors.secondary};
         font-size: 90px;
-        position: relative;
-        top: 70px;
+        transform: translate(-25px, -25px);
       }
     }
   }
@@ -170,6 +147,8 @@ export const Mision = styled.div`
   height: 350px;
   display: flex;
   flex-direction: row;
+  justify-content: center;
+  align-items: center;
 
   & > div {
     & > section {
@@ -195,18 +174,18 @@ export const Mision = styled.div`
     }
   }
   & > img {
-    width: 280px;
-    height: 300px;
+    width: 250px;
+    height: 250px;
   }
 `;
 export const Vision = styled.div`
   background-color: #eeecef;
   width: 100vw;
-  height: 300px;
+  height: 400px;
   display: flex;
   flex-direction: row;
-  justify-content: end;
-  align-items: end;
+  justify-content: center;
+  align-items: center;
   & > div {
     & > section {
       margin: 1em;
@@ -225,18 +204,22 @@ export const Vision = styled.div`
       color: transparent;
       -webkit-text-stroke: 1px ${colors.black};
       font-size: 40px;
-      margin-inline-end: 5em;
+      margin-inline-start: 3em;
     }
   }
-  & > img{
-    width: 200px;
-    height: 300px;
+  & > img {
+    width: 220px;
+    height: 250px;
   }
 `;
 export const Valores = styled.div`
   background-color: #eeecef;
   width: 100vw;
   height: 500px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
   & > div {
     & > section {
       margin: 1em;
@@ -259,18 +242,138 @@ export const Valores = styled.div`
       margin-top: 0.5em;
     }
   }
+  & > img {
+    width: 200px;
+    height: 250px;
+  }
 `;
 //-------------------------------------CONTACTOS------------------------------------------------------------
 export const Contactos = styled.section`
-  background-color: ${colors.secondary};
   width: 100vw;
   height: 100vh;
   margin-top: 1em;
+  display: flex;
+  flex-direction: row;
+`;
+export const Titulo = styled.div`
+  width: 60vw;
+  & > p {
+    &:nth-child(1) {
+      font-size: 40px;
+      text-align: start;
+      padding-top: 0.5em;
+      padding-bottom: 0.5em;
+      color: transparent;
+      -webkit-text-stroke: 1px ${colors.terceary};
+    }
+    &:nth-child(2) {
+      font-size: 30px;
+      width: 100%;
+      border-bottom: solid 1px ${colors.color};
+    }
+    &:nth-child(3) {
+      padding-top: 1em;
+      font-size: 18px;
+    }
+  }
+  .form {
+    display: flex;
+    flex-direction: row;
+    border: solid 1px ${colors.color};
+    margin-top: 0.5em;
+    align-items: center;
+
+    & div:nth-child(1) {
+      width: 50%;
+      display: flex;
+      flex-direction: column;
+      gap: 1em;
+      padding: 1em;
+      & label {
+        width: 100%;
+      }
+      & input {
+        width: 80%;
+        height: 2.5em;
+      }
+    }
+    & div:nth-child(2) {
+      width: 50%;
+      display: flex;
+      justify-content: center;
+      & > img {
+        filter: drop-shadow(0px 5px 10px black);
+        width: 300px;
+      }
+    }
+  }
+`;
+export const Imagenes = styled.div`
+  width: 40vw;
+  height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  position: relative;
+  & > img {
+    filter: drop-shadow(0px 5px 10px #000);
+    content: "";
+    position: absolute;
+    top: 0em;
+    left: -15em;
+    width: 550px;
+    height: 550px;
+    object-fit: cover;
+    animation: rotateimge 10s infinite linear;
+    /* transform:rotateX("360deg"); */
+  }
 `;
 //-------------------------------------FOOTER---------------------------------------------------------------
 export const Footer = styled.section`
-  background-color: ${colors.terceary};
+  background-color: ${colors.primary};
   width: 100vw;
   height: 50vh;
   margin-top: 1em;
+  .redes {
+    height: 5em;
+    ${displayflex};
+    position: relative;
+    & > p {
+      z-index: 3;
+      background-color: ${colors.primary};
+      padding: 1em;
+    }
+    &::before {
+      width: 90vw;
+      height: 1px;
+      background-color: ${colors.black};
+      position: absolute;
+      content: "";
+    }
+  }
+  .uno {
+    height: 8em;
+    ${displayflex};
+    flex-direction: column;
+    justify-content: end;
+    .dos {
+      gap: 1em;
+      padding: 1em;
+      ${displayflex};
+      flex-direction: column;
+      & p:nth-child(1) {
+        font-size: 30px;
+      }
+      & p:nth-child(2) {
+        font-size: 15px;
+      }
+    }
+    .tres {
+      font-weight: bold;
+      text-decoration: underline;
+      display: flex;
+      flex-direction: row;
+      gap: 1em;
+    }
+  }
 `;
