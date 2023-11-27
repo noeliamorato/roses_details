@@ -43,7 +43,19 @@ export const Navbar = styled.nav`
     color: ${colors.terceary};
   }
 `;
+export const Redes = styled.section`
+  & > div {
+    width: 100px;
+    height: 100px;
+    ${displayflex};
+    gap: 1em;
+    &>a{
+      color: ${colors.black};
+    }
+  }
+`;
 
+//------------------------------------------------HOME-------------------------------------------------------
 export const Home = styled.section`
   position: relative;
   width: 100vw;
@@ -176,6 +188,7 @@ export const Mision = styled.div`
   & > img {
     width: 250px;
     height: 250px;
+    filter: drop-shadow(0 5px 5px #000);
   }
 `;
 export const Vision = styled.div`
@@ -210,6 +223,7 @@ export const Vision = styled.div`
   & > img {
     width: 220px;
     height: 250px;
+    filter: drop-shadow(0 5px 5px #000);
   }
 `;
 export const Valores = styled.div`
@@ -245,6 +259,7 @@ export const Valores = styled.div`
   & > img {
     width: 200px;
     height: 250px;
+    filter: drop-shadow(0 5px 5px #000);
   }
 `;
 //-------------------------------------CONTACTOS------------------------------------------------------------
@@ -296,6 +311,11 @@ export const Titulo = styled.div`
         width: 80%;
         height: 2.5em;
       }
+      &>button{
+        width: 60px;
+        ${displayflex};
+        margin-inline-start: 9em;
+      }
     }
     & div:nth-child(2) {
       width: 50%;
@@ -338,17 +358,26 @@ export const Footer = styled.section`
     height: 5em;
     ${displayflex};
     position: relative;
-    & > p {
-      z-index: 3;
-      background-color: ${colors.primary};
-      padding: 1em;
-    }
+
     &::before {
       width: 90vw;
       height: 1px;
       background-color: ${colors.black};
       position: absolute;
       content: "";
+    }
+    .Fa{
+      background-color: ${colors.primary};
+      ${displayflex};
+      width: 150px;
+      
+      &>a{
+      color: ${colors.black};
+      z-index: 1;
+      background-color: ${colors.primary};
+      ${displayflex};
+      width: 100px;
+    }
     }
   }
   .uno {

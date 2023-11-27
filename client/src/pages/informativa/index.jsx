@@ -12,6 +12,7 @@ import {
   Footer,
   Titulo,
   Imagenes,
+  Redes,
 } from "../../styles/styled_index";
 
 import { Link } from "react-router-dom";
@@ -30,8 +31,24 @@ import fondo3 from "../../assets/img/fondo3.png";
 import siete from "../../assets/img/siete.png";
 import diez from "../../assets/img/diez.png";
 import doce from "../../assets/img/doce.png";
+import { FaFacebook, FaInstagram, FaWhatsapp, FaTiktok } from "react-icons/fa";
+import { useState } from 'react';
 
 const Index = () => {
+
+    const [nombre, setNombre] = useState("");
+    const [detalleElegido, setDetalleElegido] = useState("");
+    const [fechaLugar, setFechaLugar] = useState("");
+
+    const handleEnviar = () => {
+      const mensaje = `Hola, soy ${nombre}. He elegido ${detalleElegido} para ${fechaLugar}. ¿Podemos hablar más sobre esto?`;
+      const enlaceWhatsApp = `https://wa.me/59162695422?text=${encodeURIComponent(
+        mensaje
+      )}`;
+
+      window.location.href = enlaceWhatsApp;
+    };
+
   return (
     <Container>
       <div className="segundo">
@@ -54,19 +71,35 @@ const Index = () => {
             </li>
           </ul>
         </Navbar>
+        <Redes>
+          <div>
+            <a href="https://www.facebook.com/profile.php?id=61552181104689&mibextid=PzaGJu">
+              <FaFacebook />
+            </a>
+            <a href="https://instagram.com/roses_details1?igshid=OGQ5ZDc2ODk2ZA==">
+              <FaInstagram />
+            </a>
+            <a href="https://www.tiktok.com/@roses_details1?_t=8hiKuUy6kdB&_r=1">
+              <FaTiktok />
+            </a>
+            <a href="https://wa.me/59162695422">
+              <FaWhatsapp />
+            </a>
+          </div>
+        </Redes>
       </div>
 
       {/* --------------------------------------home----------------------------------------- */}
       <Home>
         <section>
           <div className="title">
-            <h1 >Roses  &</h1>
-            <h2 >Details</h2>
+            <h1>Roses &</h1>
+            <h2>Details</h2>
           </div>
           <div className="imagenes">
-            <img  src={fondo1} alt="" />
-            <img  src={fondo5} alt="" />
-            <img  src={fondo4} alt="" />
+            <img src={fondo1} alt="" />
+            <img src={fondo5} alt="" />
+            <img src={fondo4} alt="" />
           </div>
         </section>
       </Home>
@@ -155,12 +188,27 @@ const Index = () => {
 
           <div className=" form">
             <div>
-              <label htmlFor="nombre">Nombre</label>
-              <input type="text" />
+              <label htmlFor="nombre">Nombre y apellidos</label>
+              <input
+                type="text"
+                value={nombre}
+                onChange={(e) => setNombre(e.target.value)}
+              />
+
               <label htmlFor="pedido">Detalle elegido</label>
-              <input type="text" />
-              <label htmlFor="detalle elegido">Fecha y lugar</label>
-              <input type="text" />
+              <input
+                type="text"
+                value={detalleElegido}
+                onChange={(e) => setDetalleElegido(e.target.value)}
+              />
+
+              <label htmlFor="detalleElegido">Fecha y lugar</label>
+              <input
+                type="text"
+                value={fechaLugar}
+                onChange={(e) => setFechaLugar(e.target.value)}
+              />
+              <button onClick={handleEnviar}>Enviar</button>
             </div>
             <div>
               <img src={doce} alt="" />
@@ -171,18 +219,29 @@ const Index = () => {
 
       {/* --------------------------------------footer----------------------------------------- */}
       <Footer>
-        <div className="redes"> 
-        <p>redes</p>
+        <div className="redes">
+          <div className="Fa">
+            <a href="https://www.facebook.com/profile.php?id=61552181104689&mibextid=PzaGJu">
+              <FaFacebook />
+            </a>
+            <a href="https://instagram.com/roses_details1?igshid=OGQ5ZDc2ODk2ZA==">
+              <FaInstagram />
+            </a>
+            <a href="https://www.tiktok.com/@roses_details1?_t=8hiKuUy6kdB&_r=1">
+              <FaTiktok />
+            </a>
+            <a href="https://wa.me/59162695422">
+              <FaWhatsapp />
+            </a>
+          </div>
         </div>
         <div className="uno">
           <div className="dos">
-          <p>Roses & Details</p>
-          <p>Copyright © 2023 Noelia Morato Caero</p>
+            <p>Roses & Details</p>
+            <p>Copyright © 2023 Noelia Morato Caero</p>
           </div>
           <div className="tres">
-            <p>Información legar</p>  
-            |
-            <p>Política de privacidad</p>
+            <p>Información legal</p>|<p>Política de privacidad</p>
           </div>
         </div>
       </Footer>
