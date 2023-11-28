@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope, faKey } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
 import Registro from "./registro";
+import { FaFacebook, FaGoogle } from "react-icons/fa";
 
 const Login = () => {
   const [verRegister, setVerRegister] = useState(false);
@@ -46,7 +47,9 @@ const Login = () => {
                   <button>Ingresar</button>
                 </section>
                 <section>
-                  <div></div>
+                  <p>Inicia sesión con: </p>
+                  <div> <FaGoogle/> Google</div>
+                  <div> <FaFacebook/> Facebook</div>
                 </section>
               </>
                   )}

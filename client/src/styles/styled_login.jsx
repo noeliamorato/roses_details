@@ -1,10 +1,10 @@
 import styled from "styled-components";
-import { colors, displayflex } from "./styled_herencia";
+import { botoncito, colors, displayflex } from "./styled_herencia";
 
 export const Container = styled.section`
   width: 100vw;
   height: 100vh;
-  background-color: #0009;
+  background-color: ${colors.color};
   ${displayflex};
   & > section {
     ${displayflex};
@@ -19,7 +19,6 @@ export const Inicio = styled.section`
       border-top-left-radius: 10px;
       border-bottom-left-radius: 10px;
       /* background-color: 212121; */
-      background: linear-gradient(#b01a1d, #efd3d4);
       display: flex;
       justify-content: center;
       align-items: end;
@@ -61,8 +60,10 @@ export const Inicio = styled.section`
       }
     }
     .login {
+      box-shadow: 0 5px 10px #0009;
       border-top-right-radius: 10px;
       border-bottom-right-radius: 10px;
+      background: linear-gradient(#f0bebf, #f3cccd, #ffff);
       background-color: ${colors.primary};
       ${displayflex};
       width: 600px;
@@ -113,20 +114,19 @@ export const Inicio = styled.section`
         justify-content: end;
         align-items: baseline;
         & > button {
-          width: 100px;
-          height: 40px;
-          background-color: ${colors.secondary};
-          border-radius: 2em;
-          border: 0px;
-          color: ${colors.padrecolor};
-          /* background: linear-gradient(#b01a1d, #efd3d4); */
+          ${botoncito};
         }
       }
       & section:nth-child(4) {
+        background-color: #fff;
+        width: 100%;
+        ${displayflex};
+        height: 150px;
+        justify-content:space-around;
+        box-shadow: 0 -5px 10px #0005;
         & > div {
-          width: 600px;
-          height: 60px;
-          background-color: #0005;
+          ${displayflex};
+          gap: .5em;
         }
       }
     }
