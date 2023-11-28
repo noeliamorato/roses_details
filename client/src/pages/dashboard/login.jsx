@@ -6,9 +6,15 @@ import { faEnvelope, faKey } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
 import Registro from "./registro";
 import { FaFacebook, FaGoogle } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [verRegister, setVerRegister] = useState(false);
+  const navigate = useNavigate(); 
+
+  const logueo = () => {
+    navigate("/dashboard");
+  };
 
   return (
     <Container>
@@ -23,38 +29,43 @@ const Login = () => {
                 alt=""
               />
             </div>
-           
-              <div className="login">
-                <section>
-                  <img src={logo} alt="" />
-                 {verRegister? ( <p>REGISTRATE   </p>):( <p>INICIA SESIÓN </p>)}
-                </section>
-                {verRegister ? (
-              <Registro />
-            ) : (
-              <>
-                <section>
-                  <div>
-                    <FontAwesomeIcon icon={faEnvelope} />
-                    <input type="text" placeholder="Email" />
-                  </div>
-                  <div>
-                    <FontAwesomeIcon icon={faKey} />
-                    <input type="text" placeholder="Password" />
-                  </div>
-                </section>
-                <section>
-                  <button>Ingresar</button>
-                </section>
-                <section>
-                  <p>Inicia sesión con: </p>
-                  <div> <FaGoogle/> Google</div>
-                  <div> <FaFacebook/> Facebook</div>
-                </section>
-              </>
-                  )}
-              </div>
-          
+
+            <div className="login">
+              <section>
+                <img src={logo} alt="" />
+                {verRegister ? <p>REGISTRATE </p> : <p>INICIA SESIÓN </p>}
+              </section>
+              {verRegister ? (
+                <Registro />
+              ) : (
+                <>
+                  <section>
+                    <div>
+                      <FontAwesomeIcon icon={faEnvelope} />
+                      <input type="text" placeholder="Email" />
+                    </div>
+                    <div>
+                      <FontAwesomeIcon icon={faKey} />
+                      <input type="text" placeholder="Password" />
+                    </div>
+                  </section>
+                  <section>
+                    <button onClick={() => logueo()}>Ingresar</button>
+                  </section>
+                  <section>
+                    <p>Inicia sesión con: </p>
+                    <div>
+                      {" "}
+                      <FaGoogle /> Google
+                    </div>
+                    <div>
+                      {" "}
+                      <FaFacebook /> Facebook
+                    </div>
+                  </section>
+                </>
+              )}
+            </div>
           </div>
         </Inicio>
       </section>
