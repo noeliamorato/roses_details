@@ -297,6 +297,7 @@ export const Titulo = styled.div`
     border: solid 1px ${colors.color};
     margin-top: 0.5em;
     align-items: center;
+    box-shadow: 0px 5px 10px #0008;
 
     & div:nth-child(1) {
       width: 50%;

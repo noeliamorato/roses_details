@@ -33,6 +33,7 @@ import diez from "../../assets/img/diez.png";
 import doce from "../../assets/img/doce.png";
 import { FaFacebook, FaInstagram, FaWhatsapp, FaTiktok } from "react-icons/fa";
 import { useState } from 'react';
+import login from "../dashboard/login";
 
 const Index = () => {
 
