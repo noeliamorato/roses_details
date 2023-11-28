@@ -19,6 +19,8 @@ const NavDash = () => {
       <Link to="/dashboard/pedidos">Pedidos</Link>
       <Link to="/dashboard/usuarios">Usuarios</Link>
       <Link to="/dashboard/productos">Productos</Link>
+      <div className="perfilUser">
+      </div>
       <button onClick={()=>salir()}>salir</button>
   </div>
 <div>
