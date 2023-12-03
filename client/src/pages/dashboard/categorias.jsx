@@ -4,8 +4,28 @@ import { postput } from "../../services/postPut";
 import { Container } from "../../styles/styled_dashboard/contenedor";
 
 const Categorias = () => {
-  const [datos, setDatos] = useState("");
+  const [editar, setEditar] = useState(null);
 
+  const [contenido, setContenido] = useState({
+    nombre: "",
+    descripcion: "",
+  });
+
+  useEffect(() => {
+    if (editar) {
+      setContenido({
+        nombre: editar.nombre || "",
+        descripcion: editar.descripcion || "",
+      });
+    } else {
+      setContenido({
+        nombre: "",
+        descripcion: "",
+      });
+    }
+  }, [editar]);
+
+  const [datos, setDatos] = useState("");
   useEffect(() => {
     PeticionGet();
   }, []);
@@ -26,14 +46,8 @@ const Categorias = () => {
     }
   };
 
-  const [contenido, setContenido] = useState({
-    nombre: "",
-    descripcion: "",
-  });
-
   const PeticionPost = async () => {
     const resiviendo = await postput("Categorias", contenido);
-    console.log(resiviendo);
     if (resiviendo) {
       await PeticionGet();
       alert("Se agregó correctamente");
@@ -42,16 +56,23 @@ const Categorias = () => {
     alert("ERROR");
   };
 
-  const PeticionPut = async (cat) => {
-    const resiviendo = await postput("Categorias/" + cat.id, contenido, "PUT")
+  const PeticionPut = async () => {
+    const resiviendo = await postput(
+      "Categorias/" + editar.id,
+      contenido,
+      "PUT"
+    );
+    setEditar(null);
     if (resiviendo) {
-      await PeticionGet();      
+      await PeticionGet();
     }
-  }
+  };
 
   return (
     <Container>
-      <button onClick={() => PeticionPost()}>Agregar</button>
+      <button onClick={() => (editar ? PeticionPut() : PeticionPost())}>
+        {editar ? "actualizar" : "agregar"}
+      </button>
       <form>
         <label>Nombre</label>
         <input
@@ -88,9 +109,7 @@ const Categorias = () => {
                   <button onClick={() => PeticionDelete(cat.id)}>
                     Eliminar
                   </button>
-                  <button onClick={()=> (PeticionPut(cat),
-                    setContenido(cat)
-                    )}>Editar</button>
+                  <button onClick={() => setEditar(cat)}>Editar</button>
                 </td>
               </tr>
             ))}

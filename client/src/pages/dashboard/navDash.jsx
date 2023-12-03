@@ -35,16 +35,17 @@ export default NavDash
 const NavbarDash = styled.div`
 display:flex;
 .nav{
-    width:280px;
+  
+    width:15vw;
 height:100vh;
-background-color:${colors.primary};
+background-color:${colors.secondary};
 box-shadow:0 0px 5px #0008;
 ${displayflex}
 flex-direction:column;
 gap:1em;
 & a{
     text-decoration:none;
-    color:${colors.black};
+    color: #ffff;
 }
 }
 `;

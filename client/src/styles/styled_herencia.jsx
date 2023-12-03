@@ -1,4 +1,4 @@
-import styled, { css } from "styled-components";
+import { css } from "styled-components";
 
 export const colors = {
   padrecolor: "#ffff",
@@ -23,8 +23,9 @@ export const botoncito = css`
   border: 0px;
   color: ${colors.padrecolor};
   box-shadow: 0 5px 5px #0008;
-  transition:all .5s ease-in-out;
-  &:hover{
-    width:120px;
+  transition: all 0.5s ease-in-out;
+  &:hover {
+    width: 120px;
   }
 `;
+
