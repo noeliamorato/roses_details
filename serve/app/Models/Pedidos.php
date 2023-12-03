@@ -9,7 +9,7 @@ class Pedidos extends Model
 {
     use HasFactory;
     protected $filable =[
-        'id_cientes',
+        'id_clientes',
         'id_productos',
         'metodos_pago',
         'fecha',

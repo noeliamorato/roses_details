@@ -1,0 +1,14 @@
+SERVE-------------------------------------------------------------------------------
+MIGRACIONES:
+Crear una migración: php artisan make:migration nombre_de_la_migracion
+Ejecutar migraciones pendientes: php artisan migrate
+Crear un modelo y una migración al mismo tiempo: php artisan make:model NombreDelModelo -m
+Revertir la última migración ejecutada: php artisan migrate:rollback
+
+MODELOS:
+Crear un modelo: php artisan make:model NombreDelModelo
+Crear un controlador con métodos de recursos y asociar un modelo: php artisan make:controller NombreDelControlador --resource --model=NombreDelModelo
+
+CONTROLADORES:
+Crear un controlador: php artisan make:controller NombreDelControlador
+Crear un controlador con métodos de recursos (CRUD): php artisan make:controller NombreDelControlador --resource

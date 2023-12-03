@@ -1,4 +1,4 @@
-import React from "react";
+
 import { Register } from "../../styles/styled_registro";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {

@@ -3,9 +3,10 @@ import Index from "./pages/informativa";
 import Login from "./pages/dashboard/login";
 import NavDash from "./pages/dashboard/navDash";
 import Productos from "./pages/dashboard/productos";
-import Usuarios from "./pages/dashboard/usuarios";
 import Pedidos from "./pages/dashboard/pedidos";
+import Categorias from "./pages/dashboard/categorias";
 import PerflUserNav from "./pages/dashboard/perflUserNav";
+import Clientes from "./pages/dashboard/clientes";
 function App() {
   return (
     <HashRouter>
@@ -16,11 +17,12 @@ function App() {
       <Routes>
         <Route path="/dashboard/" element={<NavDash />}>
           <Route path="/dashboard/productos" element={<Productos />} />
-          <Route path="/dashboard/usuarios" element={<Usuarios />} />
+          <Route path="/dashboard/clientes" element={<Clientes />} />
           <Route path="/dashboard/pedidos" element={<Pedidos />} />
+          <Route path="/dashboard/categorias" element={<Categorias />} />
           <Route
             path="/dashboard/pedidos/:user"
-            element={<Usuarios const id={"id"} />}
+            element={<Clientes const id={"id"} />}
           />
         </Route>
       </Routes>

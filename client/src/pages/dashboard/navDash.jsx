@@ -1,4 +1,3 @@
-import React from 'react'
 import styled from "styled-components";
 import { colors, displayflex } from '../../styles/styled_herencia';
 import { Link, Outlet, useNavigate } from 'react-router-dom';
@@ -17,8 +16,9 @@ const NavDash = () => {
   <div className='nav'>
   <Link to="/dashboard">Home</Link>
       <Link to="/dashboard/pedidos">Pedidos</Link>
-      <Link to="/dashboard/usuarios">Usuarios</Link>
+      <Link to="/dashboard/clientes">Clientes</Link>
       <Link to="/dashboard/productos">Productos</Link>
+      <Link to="/dashboard/categorias">Categorias</Link>
       <div className="perfilUser">
       </div>
       <button onClick={()=>salir()}>salir</button>
