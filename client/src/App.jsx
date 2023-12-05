@@ -5,8 +5,10 @@ import NavDash from "./pages/dashboard/navDash";
 import Productos from "./pages/dashboard/productos";
 import Pedidos from "./pages/dashboard/pedidos";
 import Categorias from "./pages/dashboard/categorias";
-import PerflUserNav from "./pages/dashboard/perflUserNav";
 import Clientes from "./pages/dashboard/clientes";
+import NavClient from "./pages/dashclient/navClient";
+import Catalogo from "./pages/dashclient/catalogo";
+import PedirProd from "./pages/dashclient/pedirProd";
 function App() {
   return (
     <HashRouter>
@@ -24,6 +26,12 @@ function App() {
             path="/dashboard/pedidos/:user"
             element={<Clientes const id={"id"} />}
           />
+        </Route>
+      </Routes>
+      <Routes>
+        <Route path="/dashclient/" element={<NavClient/>}>
+          <Route path="/dashclient/catalogo" element={<Catalogo/>}></Route> 
+          <Route path="/dashclient/pedirProd" element={<PedirProd/>}></Route> 
         </Route>
       </Routes>
     </HashRouter>

@@ -4,10 +4,9 @@ import { postput } from "../../services/postPut";
 import { Container } from "../../styles/styled_dashboard/contenedor";
 
 const Productos = () => {
+  const [verform, setVerform] = useState(false);
   const [editar, setEditar] = useState(null);
-
   const [categorias, setCategorias] = useState([]);
-
   const [contenido, setContenido] = useState({
     nombre: "",
     descripcion: "",
@@ -98,73 +97,88 @@ const Productos = () => {
 
   return (
     <Container>
-      <button onClick={() => (editar ? PeticionPut() : PeticionPost())}>
-        {editar ? "actualizar" : "agregar"}
-      </button>
-      <form>
-        <label>Nombre</label>
-        <input
-          value={contenido.nombre}
-          onChange={(e) =>
-            setContenido({ ...contenido, nombre: e.target.value })
-          }
-          type="text"
-        />
-        <label>Descripción</label>
-        <input
-          value={contenido.descripcion}
-          onChange={(e) =>
-            setContenido({ ...contenido, descripcion: e.target.value })
-          }
-          type="text"
-        />
-        <label>Precio</label>
-        <input
-          value={contenido.precio}
-          onChange={(e) =>
-            setContenido({ ...contenido, precio: e.target.value })
-          }
-          type="text"
-        />
-        <label>Cantidad</label>
-        <input
-          value={contenido.cantidad}
-          onChange={(e) =>
-            setContenido({ ...contenido, cantidad: e.target.value })
-          }
-          type="text"
-        />
-        <label>ID Categorias</label>
-        <select
-          value={contenido.id_categorias}
-          onChange={(e) =>
-            setContenido({ ...contenido, id_categorias: e.target.value })
-          }
-        >
-          <option value="">Selecciona una categoría</option>
-          {categorias.map((categorias) => (
-            <option key={categorias.id} value={categorias.id}>
-              {categorias.nombre}
-            </option>
-          ))}
-        </select>
-        <label>Imagen</label>
-        <input
-          value={contenido.imagen}
-          onChange={(e) =>
-            setContenido({ ...contenido, imagen: e.target.value })
-          }
-          type="text"
-        />
-        <label>Colores</label>
-        <input
-          value={contenido.colores}
-          onChange={(e) =>
-            setContenido({ ...contenido, colores: e.target.value })
-          }
-          type="text"
-        />
-      </form>
+      <h1>Productos</h1>
+      <button onClick={() => setVerform(!verform)}>Agregar</button>
+
+      <div className={verform ? "si" : "no"}>
+        <form>
+        <section className="x">
+            <button onClick={() => setVerform(!verform)}>X</button>
+          </section>
+          <label>Nombre</label>
+          <input
+            value={contenido.nombre}
+            onChange={(e) =>
+              setContenido({ ...contenido, nombre: e.target.value })
+            }
+            type="text"
+          />
+          <label>Descripción</label>
+          <input
+            value={contenido.descripcion}
+            onChange={(e) =>
+              setContenido({ ...contenido, descripcion: e.target.value })
+            }
+            type="text"
+          />
+          <label>Precio</label>
+          <input
+            value={contenido.precio}
+            onChange={(e) =>
+              setContenido({ ...contenido, precio: e.target.value })
+            }
+            type="text"
+          />
+          <label>Cantidad</label>
+          <input
+            value={contenido.cantidad}
+            onChange={(e) =>
+              setContenido({ ...contenido, cantidad: e.target.value })
+            }
+            type="text"
+          />
+          <label>ID Categorias</label>
+          <select
+            value={contenido.id_categorias}
+            onChange={(e) =>
+              setContenido({ ...contenido, id_categorias: e.target.value })
+            }
+          >
+            <option value="">Selecciona una categoría</option>
+            {categorias.map((categorias) => (
+              <option key={categorias.id} value={categorias.id}>
+                {categorias.nombre}
+              </option>
+            ))}
+          </select>
+          <label>Imagen</label>
+          <input
+            value={contenido.imagen}
+            onChange={(e) =>
+              setContenido({ ...contenido, imagen: e.target.value })
+            }
+            type="text"
+          />
+          <label>Colores</label>
+          <input
+            value={contenido.colores}
+            onChange={(e) =>
+              setContenido({ ...contenido, colores: e.target.value })
+            }
+            type="text"
+          />
+          <section>
+            <button
+              className="boton"
+              onClick={() => (
+                editar ? PeticionPut() : PeticionPost(), setVerform(!verform)
+              )}
+            >
+              {editar ? "actualizar" : "agregar"}
+            </button>
+          </section>
+        </form>
+      </div>
       <table>
         <thead>
           <th>id</th>
@@ -175,6 +189,7 @@ const Productos = () => {
           <th>id Categorias</th>
           <th>Imagen</th>
           <th>Colores</th>
+          <th>Acciones</th>
         </thead>
         <tbody>
           {Array.isArray(datos) &&
@@ -192,7 +207,11 @@ const Productos = () => {
                   <button onClick={() => PeticionDelete(prod.id)}>
                     Eliminar
                   </button>
-                  <button onClick={() => setEditar(prod)}>Editar</button>
+                  <button
+                    onClick={() => (setEditar(prod), setVerform(!verform))}
+                  >
+                    Editar
+                  </button>
                 </td>
               </tr>
             ))}

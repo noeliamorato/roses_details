@@ -6,13 +6,27 @@ import { useState } from "react";
 import Registro from "./registro";
 import { FaFacebook, FaGoogle } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
+import { postput } from "../../services/postPut";
 
 const Login = () => {
+  const [contenido, setContenido] = useState({
+    nombre: "",
+    password: "",
+  });
   const [verRegister, setVerRegister] = useState(false);
-  const navigate = useNavigate(); 
+  const navigate = useNavigate();
 
-  const logueo = () => {
-    navigate("/dashboard");
+  const logueo = async () => {
+    const resiviendo = await postput("Login",{
+      nombre: contenido.nombre,
+      password: contenido.password,
+    });
+    console.log(resiviendo)
+    if (resiviendo) {
+      navigate("/dashboard");
+      return;
+    }
+    alert("ERROR");
   };
 
   return (
@@ -41,11 +55,25 @@ const Login = () => {
                   <section>
                     <div>
                       <FontAwesomeIcon icon={faEnvelope} />
-                      <input type="text" placeholder="Email" />
+                      <input
+                        value={contenido.nombre}
+                        onChange={(e) =>
+                          setContenido({ ...contenido, nombre: e.target.value })
+                        }
+                        type="text"
+                        placeholder="Nombre"
+                      />
                     </div>
                     <div>
                       <FontAwesomeIcon icon={faKey} />
-                      <input type="text" placeholder="Password" />
+                      <input
+                        value={contenido.password}
+                        onChange={(e) =>
+                          setContenido({ ...contenido, password: e.target.value })
+                        }
+                        type="text"
+                        placeholder="Password"
+                      />
                     </div>
                   </section>
                   <section>

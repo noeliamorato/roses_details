@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller_Cliente;
 use App\Http\Controllers\Controller_Categoria;
 use App\Http\Controllers\Controller_Pedido;
 use App\Http\Controllers\Controller_Producto;
+use App\Http\Controllers\Controller_Login;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,6 +22,8 @@ use App\Http\Controllers\Controller_Producto;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::post('/Login', [Controller_Login::class, 'store']);
 
 Route::get('/Clientes', [Controller_Cliente::class, 'index']);
 Route::post('/Clientes', [Controller_Cliente::class, 'store']);

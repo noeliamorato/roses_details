@@ -37,6 +37,7 @@ class Controller_Cliente extends Controller
         $Clien->direccion=$request->direccion;
         $Clien->departamento=$request->departamento;
         $Clien->rol=$request->rol;
+        $Clien->password=$request->password;
         $Clien->save();
         return $Clien;
     }
@@ -70,6 +71,7 @@ class Controller_Cliente extends Controller
         $Clien->direccion=$request->direccion;
         $Clien->departamento=$request->departamento;
         $Clien->rol=$request->rol;
+        $Clien->password=$request->password;
         $Clien->save();
         return $Clien;
     }

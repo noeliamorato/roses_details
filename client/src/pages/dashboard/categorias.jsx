@@ -4,6 +4,7 @@ import { postput } from "../../services/postPut";
 import { Container } from "../../styles/styled_dashboard/contenedor";
 
 const Categorias = () => {
+  const [verform, setVerform] = useState(false);
   const [editar, setEditar] = useState(null);
 
   const [contenido, setContenido] = useState({
@@ -70,10 +71,14 @@ const Categorias = () => {
 
   return (
     <Container>
-      <button onClick={() => (editar ? PeticionPut() : PeticionPost())}>
-        {editar ? "actualizar" : "agregar"}
-      </button>
-      <form>
+      <h1>Pedidos</h1>
+      <button onClick={() => setVerform(!verform)}>Agregar</button>
+
+      <div className={verform ? "si" : "no"}>
+        <form>
+          <section className="x">
+            <button onClick={() => setVerform(!verform)}>X</button>
+          </section>
         <label>Nombre</label>
         <input
           value={contenido.nombre}
@@ -90,12 +95,24 @@ const Categorias = () => {
           }
           type="text"
         />
-      </form>
+      <section>
+          <button
+            className="boton"
+            onClick={() => (
+              editar ? PeticionPut() : PeticionPost(), setVerform(!verform)
+            )}
+          >
+            {editar ? "actualizar" : "agregar"}
+          </button>
+          </section>
+        </form>
+      </div>
       <table>
         <thead>
           <th>id</th>
           <th>Nombre</th>
           <th>Descripción</th>
+          <th>Acciones</th>
         </thead>
 
         <tbody>
@@ -109,8 +126,12 @@ const Categorias = () => {
                   <button onClick={() => PeticionDelete(cat.id)}>
                     Eliminar
                   </button>
-                  <button onClick={() => setEditar(cat)}>Editar</button>
-                </td>
+                  <button
+                    onClick={() => (setEditar(cat), setVerform(!verform))}
+                  >
+                    Editar
+                  </button>
+                  </td>
               </tr>
             ))}
         </tbody>

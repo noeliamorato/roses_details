@@ -4,6 +4,7 @@ import { postput } from "../../services/postPut";
 import { Container } from "../../styles/styled_dashboard/contenedor";
 
 const Clientes = () => {
+  const [verform, setVerform] = useState(false);
   const [editar, setEditar] = useState(null);
   const [contenido, setContenido] = useState({
     ci: "",
@@ -79,73 +80,90 @@ const Clientes = () => {
   };
   return (
     <Container>
-      <button onClick={() => (editar ? PeticionPut() : PeticionPost())}>
-        {editar ? "actualizar" : "agregar"}
-      </button>
-      <form>
-        <label>ci</label>
-        <input
-          value={contenido.ci}
-          onChange={(e) => setContenido({ ...contenido, ci: e.target.value })}
-          type="text"
-        />
-        <label>Nombre</label>
-        <input
-          value={contenido.nombre}
-          onChange={(e) =>
-            setContenido({ ...contenido, nombre: e.target.value })
-          }
-          type="text"
-        />
-        <label>Apellidos</label>
-        <input
-          value={contenido.apellidos}
-          onChange={(e) =>
-            setContenido({ ...contenido, apellidos: e.target.value })
-          }
-          type="text"
-        />
-        <label>Teléfono</label>
-        <input
-          value={contenido.telefono}
-          onChange={(e) =>
-            setContenido({ ...contenido, telefono: e.target.value })
-          }
-          type="text"
-        />
-        <label>Dirección</label>
-        <input
-          value={contenido.direccion}
-          onChange={(e) =>
-            setContenido({ ...contenido, direccion: e.target.value })
-          }
-          type="text"
-        />
-        <label>Departamento</label>
-        <select
-          value={contenido.departamento}
-          onChange={(e) =>
-            setContenido({ ...contenido, departamento: e.target.value })
-          }
-        >
-          <option value="">Selecciona un departamento</option>
-          <option value="Chuquisaca">Chuquisaca</option>
-          <option value="La Paz">La Paz</option>
-          <option value="Cochabamba">Cochabamba</option>
-          <option value="Oruro">Oruro</option>
-          <option value="Potosí">Potosí</option>
-          <option value="Tarija">Tarija</option>
-          <option value="Santa Cruz">Santa Cruz</option>
-          <option value="Beni">Beni</option>
-          <option value="Pando">Pando</option>
-        </select>
-        <label>Rol</label>
-        <input
-          value={contenido.rol}
-          onChange={(e) => setContenido({ ...contenido, rol: e.target.value })}
-          type="text"
-        />
-      </form>
+      <h1>Clientes</h1>
+      <button onClick={() => setVerform(!verform)}>Agregar</button>
+
+      <div className={verform ? "si" : "no"}>
+        <form>
+          <section className="x">
+            <button onClick={() => setVerform(!verform)}>X</button>
+          </section>
+          <label>ci</label>
+          <input
+            value={contenido.ci}
+            onChange={(e) => setContenido({ ...contenido, ci: e.target.value })}
+            type="text"
+          />
+          <label>Nombre</label>
+          <input
+            value={contenido.nombre}
+            onChange={(e) =>
+              setContenido({ ...contenido, nombre: e.target.value })
+            }
+            type="text"
+          />
+          <label>Apellidos</label>
+          <input
+            value={contenido.apellidos}
+            onChange={(e) =>
+              setContenido({ ...contenido, apellidos: e.target.value })
+            }
+            type="text"
+          />
+          <label>Teléfono</label>
+          <input
+            value={contenido.telefono}
+            onChange={(e) =>
+              setContenido({ ...contenido, telefono: e.target.value })
+            }
+            type="text"
+          />
+          <label>Dirección</label>
+          <input
+            value={contenido.direccion}
+            onChange={(e) =>
+              setContenido({ ...contenido, direccion: e.target.value })
+            }
+            type="text"
+          />
+          <label>Departamento</label>
+          <select
+            value={contenido.departamento}
+            onChange={(e) =>
+              setContenido({ ...contenido, departamento: e.target.value })
+            }
+          >
+            <option value="">Selecciona un departamento</option>
+            <option value="Chuquisaca">Chuquisaca</option>
+            <option value="La Paz">La Paz</option>
+            <option value="Cochabamba">Cochabamba</option>
+            <option value="Oruro">Oruro</option>
+            <option value="Potosí">Potosí</option>
+            <option value="Tarija">Tarija</option>
+            <option value="Santa Cruz">Santa Cruz</option>
+            <option value="Beni">Beni</option>
+            <option value="Pando">Pando</option>
+          </select>
+          <label>Rol</label>
+          <input
+            value={contenido.rol}
+            onChange={(e) =>
+              setContenido({ ...contenido, rol: e.target.value })
+            }
+            type="text"
+          />
+          <section>
+            <button
+              className="boton"
+              onClick={() => (
+                editar ? PeticionPut() : PeticionPost(), setVerform(!verform)
+              )}
+            >
+              {editar ? "actualizar" : "agregar"}
+            </button>
+          </section>
+        </form>
+      </div>
       <table>
         <thead>
           <th>id</th>
@@ -174,7 +192,11 @@ const Clientes = () => {
                   <button onClick={() => PeticionDelete(clien.id)}>
                     Eliminar
                   </button>
-                  <button onClick={() => setEditar(clien)}>Editar</button>
+                  <button
+                    onClick={() => (setEditar(clien), setVerform(!verform))}
+                  >
+                    Editar
+                  </button>
                 </td>
               </tr>
             ))}

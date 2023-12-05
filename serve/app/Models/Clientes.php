@@ -16,5 +16,6 @@ class Clientes extends Model
         'direccion',
         'departamento',
         'rol',
+        'password',
     ];
 }
