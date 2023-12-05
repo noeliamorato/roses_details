@@ -5,9 +5,8 @@ import { useUser } from "../../context/userContext";
 
 const NavDash = () => {
   const navigate = useNavigate();
-   const { user, setUser} = useUser();
-   console.log(user.user)
-
+  const { user } = useUser();
+const roles= user.user.rol
 
   const salir = () => {
     navigate("/login");
@@ -15,15 +14,19 @@ const NavDash = () => {
 
   return (
     <NavbarDash>
-      <div className="nav">
-        <Link to="/dashboard">Home</Link>
-        <Link to="/dashboard/pedidos">Pedidos</Link>
-        <Link to="/dashboard/clientes">Clientes</Link>
-        <Link to="/dashboard/productos">Productos</Link>
-        <Link to="/dashboard/categorias">Categorias</Link>
-        <div className="perfilUser"></div>
-        <button onClick={() => salir()}>salir</button>
-      </div>
+      {roles === "admin" ? (
+        <div className="nav">
+          <Link to="/dashboard">Home</Link>
+          <Link to="/dashboard/pedidos">Pedidos</Link>
+          <Link to="/dashboard/clientes">Clientes</Link>
+          <Link to="/dashboard/productos">Productos</Link>
+          <Link to="/dashboard/categorias">Categorias</Link>
+          <div className="perfilUser"></div>
+          <button onClick={() => salir()}>salir</button>
+        </div>
+      ) : (
+        <h1>no eres de aca vete </h1>
+      )}
       <div>
         <Outlet />
       </div>
@@ -36,10 +39,9 @@ export default NavDash;
 const NavbarDash = styled.div`
   display: flex;
   .nav {
-    button{
+    button {
       ${botoncito};
-      &:hover{
-        
+      &:hover {
         background-color: ${colors.primary};
         color: black;
       }
