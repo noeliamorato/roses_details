@@ -41,7 +41,7 @@ const NavbarClient = styled.div`
     height: 12vh;
     ${displayflex};
     background-color: ${colors.secondary};
-    filter: drop-shadow(0 2px 5px #000);
+    filter: drop-shadow(0 2px 5px #0004);
     .sitios {
       ${displayflex};
 

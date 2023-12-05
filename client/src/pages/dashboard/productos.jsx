@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { getdelete } from "../../services/getdelete";
 import { postput } from "../../services/postPut";
 import { Container } from "../../styles/styled_dashboard/contenedor";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPencil, faTrashCan } from "@fortawesome/free-solid-svg-icons";
 
 const Productos = () => {
   const [verform, setVerform] = useState(false);
@@ -65,6 +67,13 @@ const Productos = () => {
   const PeticionPost = async () => {
     const resiviendo = await postput("Productos", contenido);
     if (resiviendo) {
+      setContenido({nombre: "",
+      descripcion: "",
+      precio: "",
+      cantidad: "",
+      id_categorias: "",
+      imagen: "",
+      colores: "",});
       await PeticionGet();
       alert("Se agregó correctamente");
       return;
@@ -205,12 +214,12 @@ const Productos = () => {
                 <td>{prod.colores}</td>
                 <td>
                   <button onClick={() => PeticionDelete(prod.id)}>
-                    Eliminar
+                  <FontAwesomeIcon icon={faTrashCan} />
                   </button>
                   <button
                     onClick={() => (setEditar(prod), setVerform(!verform))}
                   >
-                    Editar
+                    <FontAwesomeIcon icon={faPencil} />
                   </button>
                 </td>
               </tr>

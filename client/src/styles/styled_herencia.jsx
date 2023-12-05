@@ -16,6 +16,7 @@ export const displayflex = css`
 `;
 
 export const botoncito = css`
+cursor: pointer;
   width: 100px;
   height: 40px;
   background-color: ${colors.secondary};

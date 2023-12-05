@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { getdelete } from "../../services/getdelete";
 import { postput } from "../../services/postPut";
 import { Container } from "../../styles/styled_dashboard/contenedor";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPencil, faTrashCan } from "@fortawesome/free-solid-svg-icons";
 
 const Categorias = () => {
   const [verform, setVerform] = useState(false);
@@ -124,12 +126,12 @@ const Categorias = () => {
                 <td>{cat.descripcion}</td>
                 <td>
                   <button onClick={() => PeticionDelete(cat.id)}>
-                    Eliminar
+                  <FontAwesomeIcon icon={faTrashCan} />
                   </button>
                   <button
                     onClick={() => (setEditar(cat), setVerform(!verform))}
                   >
-                    Editar
+                    <FontAwesomeIcon icon={faPencil} />
                   </button>
                   </td>
               </tr>

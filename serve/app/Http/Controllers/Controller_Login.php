@@ -20,7 +20,7 @@ class Controller_Login extends Controller
         // Verificar si el usuario existe y si la contraseña coincide
         if ($usuario && $usuario->password === $password) {
             // Usuario autenticado, puedes realizar acciones adicionales aquí si es necesario
-            return response()->json(['message' => "¡Bienvenido, $nombreUsuario!"]);
+            return response()->json(['message' => "¡Bienvenido, $nombreUsuario!","user"=> $usuario]);
         } else {
             // Usuario no encontrado o contraseña incorrecta
             return response()->json(['message' => 'Usuario no encontrado.'], 404);

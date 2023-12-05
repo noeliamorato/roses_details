@@ -7,8 +7,12 @@ import Registro from "./registro";
 import { FaFacebook, FaGoogle } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import { postput } from "../../services/postPut";
+import { useUser } from "../../context/userContext";
 
 const Login = () => {
+
+const useStore = useUser();
+const dataUser = useStore.setUser;
   const [contenido, setContenido] = useState({
     nombre: "",
     password: "",
@@ -20,7 +24,10 @@ const Login = () => {
     const resiviendo = await postput("Login",{
       nombre: contenido.nombre,
       password: contenido.password,
-    });
+    }
+    );
+    dataUser(resiviendo);
+    
     console.log(resiviendo)
     if (resiviendo) {
       navigate("/dashboard");
@@ -28,6 +35,7 @@ const Login = () => {
     }
     alert("ERROR");
   };
+  console.log(dataUser)
 
   return (
     <Container>

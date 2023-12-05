@@ -24,7 +24,7 @@ export const Container = styled.div`
     top: 0;
     left: 0;
     form {
-      row-gap:1em ;
+      row-gap: 1em;
       display: flex;
       flex-direction: row;
       flex-wrap: wrap;
@@ -95,6 +95,11 @@ export const Container = styled.div`
         }
         td {
           text-align: center;
+          width: 250px;
+          max-width: 150px; /* Ancho máximo para las celdas */
+          overflow: hidden; /* Oculta el contenido que se desborda */
+          text-overflow: ellipsis; /* Muestra puntos suspensivos cuando el contenido se corta */
+          white-space: nowrap;
         }
         button {
           background-color: transparent;

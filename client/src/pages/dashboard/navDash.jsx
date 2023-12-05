@@ -1,9 +1,13 @@
 import styled from "styled-components";
-import { colors, displayflex } from "../../styles/styled_herencia";
+import { botoncito, colors, displayflex } from "../../styles/styled_herencia";
 import { Link, Outlet, useNavigate } from "react-router-dom";
+import { useUser } from "../../context/userContext";
 
 const NavDash = () => {
   const navigate = useNavigate();
+   const { user, setUser} = useUser();
+   console.log(user.user)
+
 
   const salir = () => {
     navigate("/login");
@@ -32,6 +36,14 @@ export default NavDash;
 const NavbarDash = styled.div`
   display: flex;
   .nav {
+    button{
+      ${botoncito};
+      &:hover{
+        
+        background-color: ${colors.primary};
+        color: black;
+      }
+    }
     width: 15vw;
     height: 100vh;
     background-color: ${colors.secondary};

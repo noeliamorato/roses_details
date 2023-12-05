@@ -1,13 +1,15 @@
 import { useEffect, useState } from "react";
 import { getdelete } from "../../services/getdelete";
 import { Estilos } from "../../styles/styled_dashclient/pedirclient";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCartShopping, faTrashCan } from "@fortawesome/free-solid-svg-icons";
 
 const PedirProd = () => {
   const [productos, setProductos] = useState([]);
 
   const [pedidos, setPedidos] = useState([]);
 
-  const [eliminar, setEliminar] = useState(null);
+  const [eliminar, setEliminar] = useState();
   const [modal, setModal] = useState(false);
 
   useEffect(() => {
@@ -42,7 +44,7 @@ const PedirProd = () => {
       <h3>Productos Disponibles</h3>
       <div className="cartillas-container">
         {productos.map((producto) => (
-          <div key={producto.id} className="cartilla">
+          <aside key={producto.id} className="cartilla">
             <img src={producto.imagen} alt={""} />
             <h4>{producto.nombre}</h4>
             <section>
@@ -50,14 +52,19 @@ const PedirProd = () => {
               <p>{producto.cantidad}</p>
             </section>
             <button onClick={() => agregarPedido(producto)}>
-              Agregar pedido
+              Agregar <FontAwesomeIcon icon={faCartShopping} />
             </button>
-          </div>
+          </aside>
         ))}
       </div>
 
       <div className="mispedidos">
         <h3>Mis pedidos</h3>
+        <section>
+          <button>
+            Enviar <FontAwesomeIcon icon={faCartShopping} />
+          </button>
+        </section>
         <table>
           <thead>
             <th>Nº</th>
@@ -72,7 +79,7 @@ const PedirProd = () => {
           <tbody>
             {pedidos.map((pedido, index) => (
               <tr key={index}>
-                <td>{index+1}</td>
+                <td>{index + 1}</td>
                 <td>{pedido.nombre}</td>
                 <td>{pedido.descripcion}</td>
                 <td>{pedido.precio}</td>
@@ -82,7 +89,9 @@ const PedirProd = () => {
                 </td>
                 <td>{pedido.colores}</td>
                 <td>
-                  <button onClick={() => mostrarModal(pedido)}>Eliminar</button>
+                  <button onClick={() => mostrarModal(pedido)}>
+                    <FontAwesomeIcon icon={faTrashCan} />
+                  </button>
                 </td>
               </tr>
             ))}
@@ -94,7 +103,7 @@ const PedirProd = () => {
           <div className="modal-content">
             <h3>¿Estás seguro que quieres eliminar este producto?</h3>
             <div>
-              <button onClick={eliminarPedido}>Sí</button>
+              <button onClick={() => eliminarPedido()}>Sí</button>
               <button onClick={() => setModal(false)}>No</button>
             </div>
           </div>

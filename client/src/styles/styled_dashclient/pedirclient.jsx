@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { colors, displayflex } from "../styled_herencia";
 
 export const Estilos = styled.div`
+
   width: 100%;
   height: 100%;
   & > h3 {
@@ -11,19 +12,20 @@ export const Estilos = styled.div`
     padding: 1em;
   }
   .cartillas-container {
-    ${displayflex};
+    width: 100vw;
+    overflow-x: auto;
+    scrollbar-width: thin;
+    scrollbar-color: #fff3;
+    display:flex;
     gap: 2em;
     background-color: #0002;
     padding: 1.5em;
     .cartilla {
-        
+  
       gap: 0.7em;
-      width: 200px;
-      height: 250px;
       ${displayflex};
       justify-content: flex-start;
       flex-direction: column;
-      /* From https://css.glass */
       background: rgba(255, 255, 255, 0.2);
       border-radius: 16px;
       box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
@@ -46,7 +48,7 @@ export const Estilos = styled.div`
         font-size: 14px;
       }
       section {
-        width: 100%;
+        width:200px;
         display: flex;
         flex-direction: row;
         justify-content: space-around;
@@ -65,6 +67,8 @@ export const Estilos = styled.div`
           background-color: ${colors.color};
         }
       }
+      width:400px;
+      height: 250px;
     }
   }
   .mispedidos {
@@ -75,6 +79,29 @@ export const Estilos = styled.div`
     & > h3 {
       ${displayflex}
       padding-top:1em;
+    }
+    section{
+      width: 100%;
+      display: flex;
+      justify-content: end;
+      padding-right: 7em;
+      &>button{
+        gap: .5em;
+        width: 100px;
+        height: 30px;
+        border: none;
+        background-color: transparent;
+        cursor: pointer;
+          background-color: ${colors.secondary};
+          color: ${colors.padrecolor};
+          border-radius: .5em;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        &:hover{
+          background-color: ${colors.color};
+        }
+      }
     }
     table {
       padding-left: 4em;

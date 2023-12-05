@@ -10,11 +10,12 @@ body {
 
 ::-webkit-scrollbar {
   width: 4px;
-  height: 4px;
+  height: 6px;
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: rgb(49, 48, 48);
+  background-color: rgba(37, 37, 37, 0.2);
+
 }
 
 ::-webkit-scrollbar-thumb:hover {

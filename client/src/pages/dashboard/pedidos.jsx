@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { getdelete } from "../../services/getdelete";
 import { postput } from "../../services/postPut";
 import { Container } from "../../styles/styled_dashboard/contenedor";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPencil, faTrashCan } from "@fortawesome/free-solid-svg-icons";
 
 const Pedidos = () => {
   const [verform, setVerform] = useState(false);
@@ -181,12 +183,12 @@ const Pedidos = () => {
                 <td>{ped.fecha}</td>
                 <td>
                   <button onClick={() => PeticionDelete(ped.id)}>
-                    Eliminar
+                  <FontAwesomeIcon icon={faTrashCan} />
                   </button>
                   <button
                     onClick={() => (setEditar(ped), setVerform(!verform))}
                   >
-                    Editar
+                    <FontAwesomeIcon icon={faPencil} />
                   </button>
                 </td>
               </tr>
