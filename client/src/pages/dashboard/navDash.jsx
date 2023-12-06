@@ -6,11 +6,13 @@ import { useUser } from "../../context/userContext";
 const NavDash = () => {
   const navigate = useNavigate();
   const { user } = useUser();
-const roles= user.user.rol
+  const roles = user.user.rol;
 
   const salir = () => {
     navigate("/login");
   };
+
+
 
   return (
     <NavbarDash>
@@ -25,7 +27,7 @@ const roles= user.user.rol
           <button onClick={() => salir()}>salir</button>
         </div>
       ) : (
-        <h1>no eres de aca vete </h1>
+        <Link to="/dashclient">Home</Link>
       )}
       <div>
         <Outlet />

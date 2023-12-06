@@ -23,16 +23,25 @@ const PedirProd = () => {
     fetchProductos();
   }, []);
 
-  console.log(productos);
+  // Función para obtener los pedidos almacenados en localStorage al cargar el componente
+  useEffect(() => {
+    const pedidosGuardados = JSON.parse(localStorage.getItem('pedidos')) || [];
+    setPedidos(pedidosGuardados);
+  }, []);
+  // Función para agregar un pedido y guardarlos en localStorage
   const agregarPedido = (producto) => {
-    setPedidos([...pedidos, producto]);
+    const nuevosPedidos = [...pedidos, producto];
+    setPedidos(nuevosPedidos);
+    localStorage.setItem('pedidos', JSON.stringify(nuevosPedidos));
   };
+
 
   const eliminarPedido = () => {
     const nuevosPedidos = pedidos.filter((pedido) => pedido.id !== eliminar.id);
     setPedidos(nuevosPedidos);
-    setEliminar(null); // Limpiar el producto seleccionado después de eliminar
-    setModal(false); // Cerrar el modal después de eliminar
+    localStorage.setItem('pedidos', JSON.stringify(nuevosPedidos));
+    setEliminar(null);
+    setModal(false);
   };
 
   const mostrarModal = (producto) => {
