@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { botoncito, colors, displayflex } from "../../styles/styled_herencia";
 import { Link, Outlet, useNavigate } from "react-router-dom";
 import { useUser } from "../../context/userContext";
+import NavClient from "../dashclient/navClient";
 
 const NavDash = () => {
   const navigate = useNavigate();
@@ -12,27 +13,32 @@ const NavDash = () => {
     navigate("/login");
   };
 
-
-
   return (
-    <NavbarDash>
+    <>
       {roles === "admin" ? (
-        <div className="nav">
-          <Link to="/dashboard">Home</Link>
-          <Link to="/dashboard/pedidos">Pedidos</Link>
-          <Link to="/dashboard/clientes">Clientes</Link>
-          <Link to="/dashboard/productos">Productos</Link>
-          <Link to="/dashboard/categorias">Categorias</Link>
-          <div className="perfilUser"></div>
-          <button onClick={() => salir()}>salir</button>
-        </div>
+        <NavbarDash>
+          <div className="nav">
+            <Link to="/dashboard">Home</Link>
+            <Link to="/dashboard/pedidos">Pedidos</Link>
+            <Link to="/dashboard/clientes">Clientes</Link>
+            <Link to="/dashboard/productos">Productos</Link>
+            <Link to="/dashboard/categorias">Categorias</Link>
+            <div className="perfilUser"></div>
+            <button onClick={() => salir()}>salir</button>
+          </div>
+          <div>
+            <Outlet />
+          </div>
+        </NavbarDash>
       ) : (
-        <Link to="/dashclient">Home</Link>
+        <>
+          <NavClient />
+          <div>
+            <Outlet />
+          </div>
+        </>
       )}
-      <div>
-        <Outlet />
-      </div>
-    </NavbarDash>
+    </>
   );
 };
 
