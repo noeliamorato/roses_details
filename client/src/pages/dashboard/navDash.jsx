@@ -15,7 +15,7 @@ const NavDash = () => {
 
   return (
     <>
-      {roles === "admin" ? (
+      {roles == "admin" ? (
         <NavbarDash>
           <div className="nav">
             <Link to="/dashboard">Home</Link>
